@@ -22,11 +22,10 @@ router.post('/products/:id/review', validateReview, async (req, res)=>{
 
     await foundProduct.save(); 
     await review.save(); 
-
+    req.flash('success' , 'Review added successfully');
     res.redirect(`/products/${id}`);
   }
   catch(e){
-    console.log('pushing error in db')
     res.status(500).render('error', {err:e})
   }
 })
