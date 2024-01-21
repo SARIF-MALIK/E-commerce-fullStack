@@ -1,0 +1,29 @@
+<%- include('../partials/header')%> 
+
+        <h1>Edit my Item</h1>
+
+        <form action="/products/<%=foundProduct._id%>/edit?_method=PATCH" method="POST">
+            <div>
+                <label for="naam">Name:</label>
+                <input type="text" name="name" id="naam" value="<%=foundProduct.name%>">
+            </div>
+            <div>
+                <label for="Image">Image:</label>
+                <input type="text" name="img" id="Image" value="<%=foundProduct.img%>">
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="text" name="price" id="price" value="<%=foundProduct.price%>">
+            </div>
+            <div>
+                <label for="stock">Stock:</label>
+                <input type="text" name="instock" id="stock" value="<%=foundProduct.instock%>">
+            </div>
+            <div>
+                <label for="des">Description:</label>
+                <textarea type="text" name="desc" id="des" rows="3"><%=foundProduct.desc%></textarea>
+            </div>
+
+            <button type="submit">Edit Product</button>
+        </form>
+<%- include('../partials/footer')%> 
