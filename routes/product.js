@@ -33,16 +33,15 @@ router.post('/products', validateProduct, async (req, res) => {
 })
 
 router.get('/products/:id', async (req, res) => {
-    let { id } = req.params;
-    // let foundProduct = await Product.find({_id: id}); 
-    // for(item of foundProduct){
-    //     console.log(item); 
-    //     res.render('show', {item}); 
-    // }
+    try {
+        let { id } = req.params;
+        let item = await Product.findById(id).populate('reviews');
+    
+        res.render('products/show', { item, msg:req.flash('msg') });
+    } catch (e) {
+        res.status(500).render('error', { err: e.message });
+    }
 
-    let item = await Product.findById(id).populate('reviews');
-    console.log(item);
-    res.render('products/show', { item });
 })
 
 router.get('/products/:id/edit', async (req, res) => {
@@ -78,6 +77,7 @@ router.delete('/products/:id/remove', async (req, res) => {
             await Review.findByIdAndDelete(item);
         }
         await Product.findByIdAndDelete(id);
+        req.flash('success', 'Product deleted successfully');
         res.redirect('/products');
 
     } catch (e) {
