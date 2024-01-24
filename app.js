@@ -51,20 +51,15 @@ app.use((req,res,next)=>{
 })
 
 // passport 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-      User.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
-        return done(null, user);
-      });
-    }
-  ));
+
 
 app.use(productRoutes); 
 app.use(reviewRoutes);
 app.use(authRoutes); 
+
+app.get('*', (req, res) => {
+    res.send(`<h1>404 BAD REQUEST</h1>`)
+})
 
 let PORT = 8080; 
 app.listen(PORT, ()=>{

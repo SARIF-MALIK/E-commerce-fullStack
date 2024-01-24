@@ -85,9 +85,6 @@ router.delete('/products/:id/remove', async (req, res) => {
     }
 })
 
-router.get('*', (req, res) => {
-    res.send(`<h1>404 BAD REQUEST</h1>`)
-})
 
 module.exports = router;
 

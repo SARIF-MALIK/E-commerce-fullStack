@@ -1,12 +1,28 @@
 <%- include('../partials/header')%>
 
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <%- include('../partials/flash') %> 
-        <form action="">
-            <div>
-                <label for="username" class="form-label">UserName:</label>
+<div class="row" style="margin-top: 80px;">
+    <div class="col-6 mx-auto">
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="naam" class="form-label">Username: </label>
+                <input type="text" class="form-control" name="username" id="naam" placeholder="Name of Product" required>
             </div>
+            <div class="mb-3">
+                <label for="mail" class="form-label">Email: </label>
+                <input type="email" class="form-control" name="email" id="mail" placeholder="Email of the user" required >
+            </div>
+            <div class="mb-3">
+                <label for="umar" class="form-label">Age: </label>
+                <input class="form-control" type="number" name="age" id="umar" placeholder="Age of the user" required>
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Password: </label>
+                <input type="password" class="form-control" name="password" id="pass" placeholder="Password of the user" required >
+            </div>
+            <button type="submit" class="btn btn-sm btn-success">Sign-up</button>
+            
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
         </form>
     </div>
 </div>
