@@ -31,7 +31,12 @@ app.use(methodOverride('_method'))
 let configSession = {
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{
+        httpOnly: true,
+        expires: Date.now()+7*24*60*60*1000,     // 7 days each day 24 hr 60 min 60sec 1000 ms 
+        maxAge: 7*24*60*60*1000,   // 7 days Age
+    }
 }
 
 app.use(session(configSession));
@@ -45,6 +50,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
+    res.locals.currentUser = req.user; 
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();

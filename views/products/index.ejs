@@ -1,14 +1,12 @@
 <%- include('../partials/header')%>
     <%-include('../partials/navbar')%>
         <%-include('../partials/flash')%>
-
-            <h1>Displaying all the products</h1>
-            <h2> <a href="/product/new">Create a new Product</a> </h2>
-            <section class="row">
+            
+            <section class="row mt-5">
 
 
                 <% for(let item of products){ %>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mx-auto mt-5">
                         <div class="card mx-auto" style="width: 18rem;">
                             <img class="card-img-top" src="<%=item.img%>" />
                             <div class="card-body">

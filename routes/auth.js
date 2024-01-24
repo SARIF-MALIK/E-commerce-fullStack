@@ -8,10 +8,22 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    let { email, password, username, age } = req.body;
-    const user = new User({ email, username, age })
-    const newUser = await User.register(user, password);
-    res.send(newUser);
+    try {
+        let { email, password, username, age } = req.body;
+        const user = new User({ email, username, age })
+        const newUser = await User.register(user, password);
+        // res.send(newUser);
+        req.login(newUser, (err)=>{
+            if(err){
+                return next(err)
+            }
+            req.flash('success', 'welcome'); 
+            return res.redirect('/products')
+        })
+    } catch (e) {
+        req.flash('error', e.message)
+        res.redirect('/signup')
+    }
 
 })
 

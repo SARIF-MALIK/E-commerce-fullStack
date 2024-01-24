@@ -10,7 +10,7 @@
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/products/new">New</a>
+            <a class="nav-link" href="/product/new">New</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,13 +26,18 @@
         
         </ul>
         <div class="d-flex" role="search" >
-          <a href="/login"><button class="btn btn-outline-info mx-2">Login</button></a>
-          <a href="" class="nav-link">
+          <% if(!currentUser){ %> 
 
-            <i class="fa-solid fa-cart-shopping fa-xl"></i>
-            <sup><span class="badge bg-danger">2</span></sup>
-          </a>
-          <a href="/logout"><button class="btn btn-outline-info mx-2" type="submit">Logout</button></a> 
+            <a href="/login"><button class="btn btn-outline-info mx-2">Login</button></a>
+          <% } else { %> 
+
+            <a href="" class="nav-link">
+  
+              <i class="fa-solid fa-cart-shopping fa-xl"></i>
+              <sup><span class="badge bg-danger">2</span></sup>
+            </a>
+            <a href="/logout"><button class="btn btn-outline-info mx-2" type="submit">Logout</button></a> 
+          <% } %> 
         </div>
       </div>
     </div>

@@ -21,4 +21,12 @@ let validateReview = (req, res, next)=>{
     next(); 
 }   
 
-module.exports = {validateProduct, validateReview}; 
+const isLoggedIn = (req, res, next)=>{
+    if(!req.isAuthenticated()){
+        req.flash('error', 'please login first'); 
+        return res.redirect('/login'); 
+    }
+    next(); 
+}
+
+module.exports = {validateProduct, validateReview, isLoggedIn}; 

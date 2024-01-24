@@ -2,10 +2,10 @@ const express = require('express');
 const Product = require('../models/Product');
 const Review = require('../models/Review');
 const router = express.Router();
-const { validateProduct } = require('../middleware');
+const { validateProduct, isLoggedIn } = require('../middleware');
 
 // Read all the products 
-router.get('/products', async (req, res) => {
+router.get('/products', isLoggedIn ,async (req, res) => {
     try {
         let products = await Product.find();
         res.render('products/index', { products });
@@ -16,11 +16,11 @@ router.get('/products', async (req, res) => {
 })
 
 // SHOW a form to add a particular products
-router.get('/product/new', (req, res) => {
+router.get('/product/new', isLoggedIn ,(req, res) => {
     res.render('products/new');
 })
 
-router.post('/products', validateProduct, async (req, res) => {
+router.post('/products', isLoggedIn ,validateProduct, async (req, res) => {
     try {
         let { name, img, price, instock, desc } = req.body;
         await Product.create({ name, img, price, instock, desc });
@@ -32,7 +32,7 @@ router.post('/products', validateProduct, async (req, res) => {
 
 })
 
-router.get('/products/:id', async (req, res) => {
+router.get('/products/:id', isLoggedIn ,async (req, res) => {
     try {
         let { id } = req.params;
         let item = await Product.findById(id).populate('reviews');
@@ -44,13 +44,13 @@ router.get('/products/:id', async (req, res) => {
 
 })
 
-router.get('/products/:id/edit', async (req, res) => {
+router.get('/products/:id/edit', isLoggedIn , async (req, res) => {
     let { id } = req.params;
     let foundProduct = await Product.findById(id);
     res.render('products/edit', { foundProduct });
 })
 
-router.patch('/products/:id/edit', async (req, res) => {
+router.patch('/products/:id/edit', isLoggedIn ,async (req, res) => {
     try {
         let { id } = req.params;
         let obj = req.body;
@@ -68,7 +68,7 @@ router.patch('/products/:id/edit', async (req, res) => {
     }
 })
 
-router.delete('/products/:id/remove', async (req, res) => {
+router.delete('/products/:id/remove', isLoggedIn ,async (req, res) => {
     try {
         let { id } = req.params;
         // await Product.deleteOne({_id: id}); 
