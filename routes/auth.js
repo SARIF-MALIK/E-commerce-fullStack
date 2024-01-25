@@ -9,8 +9,8 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        let { email, password, username, age } = req.body;
-        const user = new User({ email, username, age })
+        let { email, password, username, age, role } = req.body;
+        const user = new User({ email, username, age, role })
         const newUser = await User.register(user, password);
         // res.send(newUser);
         req.login(newUser, (err)=>{

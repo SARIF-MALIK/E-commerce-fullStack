@@ -2,7 +2,7 @@ const express = require('express');
 const Product = require('../models/Product');
 const Review = require('../models/Review');
 const router = express.Router();
-const { validateProduct, isLoggedIn } = require('../middleware');
+const { validateProduct, isLoggedIn, isSeller } = require('../middleware');
 
 // Read all the products 
 router.get('/products', isLoggedIn ,async (req, res) => {
@@ -20,10 +20,10 @@ router.get('/product/new', isLoggedIn ,(req, res) => {
     res.render('products/new');
 })
 
-router.post('/products', isLoggedIn ,validateProduct, async (req, res) => {
+router.post('/products', isLoggedIn ,validateProduct, isSeller, async (req, res) => {
     try {
         let { name, img, price, instock, desc } = req.body;
-        await Product.create({ name, img, price, instock, desc });
+        await Product.create({ name, img, price, instock, desc, author:req.user._id});
         req.flash('success', 'Product added successfully');
         res.redirect('/products');
     } catch (e) {

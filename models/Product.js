@@ -26,7 +26,11 @@ const productSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'Review'
         }
-    ]
+    ], 
+    author:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'          
+    }
 })
 
 let Product = mongoose.model('Product', productSchema);   // model returns a class js class , model is singular 

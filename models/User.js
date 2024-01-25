@@ -12,7 +12,11 @@ const userSchema = new mongoose.Schema({
        age:{
         type:Number,
         required:true
-       }   
+       }, 
+    role: {
+        type: String,
+        required: true
+    }
 })
 
 userSchema.plugin(passportLocalMongoose);

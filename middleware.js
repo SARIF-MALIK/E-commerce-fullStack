@@ -29,4 +29,12 @@ const isLoggedIn = (req, res, next)=>{
     next(); 
 }
 
-module.exports = {validateProduct, validateReview, isLoggedIn}; 
+const isSeller = (req, res, next)=>{
+    if(!req.user.role || req.user.role !== 'seller'){
+        req.flash('error', 'You do not have the permission to do that'); 
+        return res.redirect('/products'); 
+    }
+    next(); 
+}
+
+module.exports = {validateProduct, validateReview, isLoggedIn, isSeller}; 
