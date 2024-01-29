@@ -1,0 +1,14 @@
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<%-include('../partials/flash')%>
+
+
+<ul>
+    <% for(let item of user.cart){ %> 
+        <li><%=item.name%> '-->' <%=item.price %> </li>
+        <% } %> 
+</ul>
+
+
+
+<%-include('../partials/footer')%>
