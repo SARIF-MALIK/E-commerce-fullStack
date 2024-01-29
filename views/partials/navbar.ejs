@@ -33,9 +33,9 @@
             <a href="/login"><button class="btn btn-outline-info mx-2">Login</button></a>
           <% } else { %> 
             <a href="#" class="nav-link">Hello, <%= currentUser.username %> </a>
-            <a href="#" class="nav-link">
+            <a href="/user/cart" class="nav-link">
               <i class="fa-solid fa-cart-shopping fa-xl"></i>
-              <sup><span class="badge bg-danger">2</span></sup>
+              <sup><span class="badge bg-danger"><%= currentUser.cart.length %></span></sup>
             </a>
             <a href="/logout"><button class="btn btn-outline-info mx-2" type="submit">Logout</button></a> 
           <% } %> 
