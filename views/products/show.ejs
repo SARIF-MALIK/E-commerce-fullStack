@@ -17,7 +17,15 @@
             <h2><%=item.price%></h2>
             <h4><%=item.instock%></h4>
             <p><%=item.desc%></p>
+            <% if(currentUser && currentUser.role === 'seller'){ %> 
+            <a href="/products/<%=item._id%>/edit"><button class="btn btn-primary">Edit</button></a>
+            <%}  %>
+            <% if(currentUser && currentUser.role === 'buyer'){ %>
+            <a href="#" class="btn btn-sm btn-secondary">Add to Cart</a>
+            <a href="#" class="btn btn-sm btn-secondary">Buy Product</a>
+            <%}  %>
         </div>
+        <% if(currentUser && currentUser.role === 'buyer'){ %>
         <div class="col-6 border">
             <form action="/products/<%=item._id%>/review" method="POST">
                 <div>
@@ -57,6 +65,7 @@
                 <% } %> 
             </article>
         </div>
+        <%}  %>
     </section>
 
 <%- include('../partials/footer')%> 

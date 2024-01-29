@@ -2,7 +2,7 @@ const express = require('express');
 const Product = require('../models/Product');
 const Review = require('../models/Review');
 const router = express.Router();
-const { validateProduct, isLoggedIn, isSeller } = require('../middleware');
+const { validateProduct, isLoggedIn, isSeller, isProductAuther } = require('../middleware');
 
 // Read all the products 
 router.get('/products', isLoggedIn ,async (req, res) => {
@@ -50,7 +50,7 @@ router.get('/products/:id/edit', isLoggedIn , async (req, res) => {
     res.render('products/edit', { foundProduct });
 })
 
-router.patch('/products/:id/edit', isLoggedIn ,async (req, res) => {
+router.patch('/products/:id/edit', isLoggedIn, isSeller,async (req, res) => {
     try {
         let { id } = req.params;
         let obj = req.body;
@@ -68,7 +68,7 @@ router.patch('/products/:id/edit', isLoggedIn ,async (req, res) => {
     }
 })
 
-router.delete('/products/:id/remove', isLoggedIn ,async (req, res) => {
+router.delete('/products/:id/remove', isLoggedIn , isProductAuther,async (req, res) => {
     try {
         let { id } = req.params;
         // await Product.deleteOne({_id: id}); 

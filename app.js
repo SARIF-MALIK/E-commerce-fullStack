@@ -13,6 +13,7 @@ const User = require('./models/User')
 const productRoutes = require('./routes/product');
 const reviewRoutes = require('./routes/reviews'); 
 const authRoutes = require('./routes/auth'); 
+const cartRoutes = require('./routes/cart'); 
 
 mongoose.set('strictQuery', true); 
 mongoose.connect('mongodb://127.0.0.1:27017/websoldiers')  // database name websoldiers 
@@ -25,6 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(express.urlencoded({extended:true})); 
 app.use(methodOverride('_method'))
+
 
 // seedDB() 
 
@@ -62,6 +64,7 @@ app.use((req,res,next)=>{
 app.use(productRoutes); 
 app.use(reviewRoutes);
 app.use(authRoutes); 
+app.use(cartRoutes); 
 
 app.get('*', (req, res) => {
     res.send(`<h1>404 BAD REQUEST</h1>`)
