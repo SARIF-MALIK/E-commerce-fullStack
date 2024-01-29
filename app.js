@@ -14,6 +14,7 @@ const productRoutes = require('./routes/product');
 const reviewRoutes = require('./routes/reviews'); 
 const authRoutes = require('./routes/auth'); 
 const cartRoutes = require('./routes/cart'); 
+const productApi = require('./routes/api/productapi'); 
 
 mongoose.set('strictQuery', true); 
 mongoose.connect('mongodb://127.0.0.1:27017/websoldiers')  // database name websoldiers 
@@ -65,6 +66,7 @@ app.use(productRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes); 
 app.use(cartRoutes); 
+app.use(productApi); 
 
 app.get('*', (req, res) => {
     res.send(`<h1>404 BAD REQUEST</h1>`)

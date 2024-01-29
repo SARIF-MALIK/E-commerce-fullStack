@@ -30,6 +30,10 @@ const productSchema = new mongoose.Schema({
     author:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'          
+    }, 
+    avgRating:{
+        type: Number,
+        default: 0
     }
 })
 
