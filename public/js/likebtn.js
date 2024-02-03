@@ -5,7 +5,7 @@ async function likeButton(productId, btn){
         let response = await axios({
             method: 'POST',
             url: `/product/${productId}/like`,
-            // headers: {'X-Requested-With': 'XMLHttpRequest'},
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
         })
 
         if(btn.children[0].classList.contains('fas')){
@@ -18,13 +18,14 @@ async function likeButton(productId, btn){
     } catch (e) {
         // console.log(e); 
         // console.log(e.message);  
-        window.location.replace('/login');   // redirect in frontend part 
+        window.location.replace('/signup');   // redirect in frontend part 
     }
 }
 
 for(let btn of allLikeButton){
     btn.addEventListener('click', ()=>{
         let productId = btn.getAttribute('product-id'); 
+        // console.log('productID: ',productId); 
         likeButton(productId, btn); 
     })
 } 

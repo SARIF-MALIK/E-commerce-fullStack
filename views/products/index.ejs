@@ -38,10 +38,10 @@
                             </div>
                             <div class="d-flex justify-content-evenly">
 
-                                <a href="/products/<%=item._id%>"><button class="btn btn-primary">View Product</button></a>
+                                <a href="/products/<%=item._id%>"><button class="btn btn-primary mb-3">View Product</button></a>
                                 <% if(currentUser && currentUser.role === 'seller'){ %> 
                                 <form action="/products/<%=item._id%>/remove?_method=DELETE" method="POST">
-                                    <button class="btn btn-primary">Delete</button>
+                                    <button class="btn btn-primary ">Delete</button>
                                 </form>
                                 <%}  %>
                             </div>

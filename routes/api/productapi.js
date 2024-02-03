@@ -15,14 +15,14 @@ router.post('product/:productId/like', isLoggedIn, async (req, res)=>{
 //  $addToSet operator adds or appends a value to an array, only if the value does not exist in the array. 
 // The $addToSet returns the same array without modifying when the value already is in the array.
 
-    // if(isLiked){
-    //     User.findByIdAndUpdate(req.user._id, {$pull:{wishList:productId}})
-    // }else{
-    //     User.findByIdAndUpdate(req.user._id, {$addToSet:{wishList:productId}})
-    // }
+    if(isLiked){
+        await User.findByIdAndUpdate(req.user._id, {$pull:{wishList:productId}})
+    }else{
+        await User.findByIdAndUpdate(req.user._id, {$addToSet:{wishList:productId}})
+    }
 
-    const option = isLiked? '$pull': '$addToSet'; 
-    req.user = await User.findByIdAndUpdate(req.user._id, {[option]: {wishList:productId}}, {new:true})
+    // const option = isLiked? '$pull': '$addToSet'; 
+    // req.user = await User.findByIdAndUpdate(req.user._id, {[option]: {wishList:productId}}, {new:true})
     res.send('like done api')
     // new:true -> it returns the updated data value else data will be returned prior to updation 
 })

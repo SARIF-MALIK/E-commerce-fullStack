@@ -23,6 +23,11 @@ let validateReview = (req, res, next)=>{
 }   
 
 const isLoggedIn = (req, res, next)=>{
+    if(req.xhr && !req.isAuthenticated()){
+        return res.status(401).send('unauthorised');
+        // console.log(req.xhr);//ajax hai ya nhi hai?
+    }
+    
     if(!req.isAuthenticated()){
         req.flash('error', 'please login first'); 
         return res.redirect('/login'); 
