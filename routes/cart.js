@@ -36,19 +36,35 @@ router.get('/checkout/:id', async (req, res)=>{
     let user = await User.findById(userId).populate("cart"); 
     let totalAmount = user.cart.reduce((sum, curr)=> sum+curr.price, 0); 
 
-    const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price_data: {
-              currency: 'usd',
-              product_data: {
-                name: 'T-shirt',
-              },
-              unit_amount: totalAmount*100,
+    let cartItems = user.cart.map((item)=>{
+      return{
+        
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: item.name,
             },
-            quantity: 1,
+            unit_amount: item.price*100,
           },
-        ],
+          quantity: 1,
+        
+      }
+    })
+
+    const session = await stripe.checkout.sessions.create({
+        // line_items: [
+        //   {
+        //     price_data: {
+        //       currency: 'usd',
+        //       product_data: {
+        //         name: 'T-shirt',
+        //       },
+        //       unit_amount: totalAmount*100,
+        //     },
+        //     quantity: 1,
+        //   },
+        // ],
+        line_items: cartItems,
         mode: 'payment',
         success_url: 'http://localhost:4242/success',
         cancel_url: 'http://localhost:4242/cancel',
