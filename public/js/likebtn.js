@@ -1,9 +1,11 @@
+
+
 const allLikeButton = document.querySelectorAll('.like-btn'); 
 
 async function likeButton(productId, btn){
     try {
         let response = await axios({
-            method: 'POST',
+            method: 'post',
             url: `/product/${productId}/like`,
             headers: {'X-Requested-With': 'XMLHttpRequest'},
         })
@@ -16,9 +18,9 @@ async function likeButton(productId, btn){
             btn.children[0].classList.add('fas')    
         }
     } catch (e) {
-        // console.log(e); 
-        // console.log(e.message);  
-        window.location.replace('/signup');   // redirect in frontend part 
+        console.log(e); 
+        console.log(e.message);
+        window.location.replace('/products');   // redirect in frontend part 
     }
 }
 
