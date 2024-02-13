@@ -16,8 +16,13 @@ const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart'); 
 const productApi = require('./routes/api/productapi'); 
 
+require('dotenv').config()
+console.log(process.env.dbURL)
+let dbURL = process.env.dbURL; 
+
 mongoose.set('strictQuery', true); 
-mongoose.connect('mongodb://127.0.0.1:27017/websoldiers')  // database name websoldiers 
+// mongoose.connect('mongodb://127.0.0.1:27017/websoldiers')  // database name websoldiers 
+mongoose.connect(dbURL)  // database name websoldiers 
 .then(()=>console.log('db connected'))
 .catch((err)=>console.log('db not connected', err)); 
 

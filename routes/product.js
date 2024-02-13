@@ -3,22 +3,13 @@ const Product = require('../models/Product');
 const Review = require('../models/Review');
 const router = express.Router();
 const { validateProduct, isLoggedIn, isSeller, isProductAuther } = require('../middleware');
+const {allProducts, nayaProduct} = require("../controllers/productController")
 
 // Read all the products 
-router.get('/products', isLoggedIn ,async (req, res) => {
-    try {
-        let products = await Product.find();
-        res.render('products/index', { products });
-    } catch (e) {
-        res.status(500).render('error', { err: e.message });
-    }
-
-})
+router.get('/products', isLoggedIn ,allProducts)
 
 // SHOW a form to add a particular products
-router.get('/product/new', isLoggedIn ,(req, res) => {
-    res.render('products/new');
-})
+router.get('/product/new', isLoggedIn , nayaProduct)
 
 router.post('/products', isLoggedIn ,validateProduct, isSeller, async (req, res) => {
     try {
