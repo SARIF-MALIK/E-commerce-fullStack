@@ -29,7 +29,7 @@
           <% for(let item of user.cart){ %>
           <li><span> <%=item.name%> --&gt; $ <%=item.price%> </span></li>
           <% } %>
-          <li>Total Amount: $ <%=totalAmount%></li>
+          <li>Total Amount: ₹ <%=totalAmount%></li>
         </ul>
         <a href="/checkout/<%=user._id%>">
             <button class="btn btn-sm btn-success">Checkout</button>
