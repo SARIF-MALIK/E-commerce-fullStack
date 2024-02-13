@@ -29,3 +29,4 @@ yarn-error.log*
 
 /server/apiKey.js
 .txt
+mongoDBKey.txt

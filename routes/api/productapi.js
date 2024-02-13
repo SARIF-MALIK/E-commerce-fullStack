@@ -6,7 +6,7 @@ const router = express.Router();
 let {isLoggedIn} = require('../../middleware')
 const User = require('../../models/User')
 
-router.post('product/:productId/like', isLoggedIn, async (req, res)=>{
+router.post('/product/:productId/like', isLoggedIn, async (req, res)=>{
     try {
         let {productId} = req.params; 
     let user = req.user; 
@@ -30,6 +30,8 @@ router.post('product/:productId/like', isLoggedIn, async (req, res)=>{
 
     } catch (error) {
         req.flash('error', error.message)
+        console.log(error); 
+        console.log(error.message); 
     }
     
     })

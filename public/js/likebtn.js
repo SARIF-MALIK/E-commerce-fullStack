@@ -1,4 +1,4 @@
-
+// import axios from "axios";
 
 const allLikeButton = document.querySelectorAll('.like-btn'); 
 
@@ -20,7 +20,7 @@ async function likeButton(productId, btn){
     } catch (e) {
         console.log(e); 
         console.log(e.message);
-        window.location.replace('/products');   // redirect in frontend part 
+        // window.location.replace('/products');   // redirect in frontend part 
     }
 }
 
