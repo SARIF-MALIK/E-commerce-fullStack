@@ -3,7 +3,10 @@ const router = express.Router();
 const {isLoggedIn} = require('../middleware');
 const Product = require('../models/Product');
 const User = require('../models/User');
-const stripe = require('stripe')('sk_test_51OfFQASBYsi7otwkUzYs2P5RphIYPznyov4OpWB77ci9DHj1L82tayt0hJRvPUHJ8oDsSYqmYKkTaZviccJmKMrM00qVFgX6co')
+
+require('dotenv').config()
+const stripeKey = process.env.stripeKey; 
+const stripe = require('stripe')(stripeKey)
 
 // route to see the cart 
 
