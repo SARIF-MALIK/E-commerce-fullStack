@@ -66,11 +66,21 @@ router.get('/checkout/:id', async (req, res)=>{
         // ],
         line_items: cartItems,
         mode: 'payment',
-        success_url: 'http://localhost:4242/success',
-        cancel_url: 'http://localhost:4242/cancel',
+        success_url: 'http://localhost:8080/success',
+        cancel_url: 'http://localhost:8080/cancel',
       });
     
       res.redirect(303, session.url);
+})
+
+router.get('/success', (req, res)=>{
+  req.flash('success', 'Payment done successfully');
+  res.redirect('/products');
+})
+
+
+router.get('/cancel', (req, res)=>{
+  res.render('cart/cancel'); 
 })
 
 

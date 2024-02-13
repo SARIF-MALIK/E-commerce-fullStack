@@ -5,6 +5,11 @@ const router = express.Router();
 const { validateProduct, isLoggedIn, isSeller, isProductAuther } = require('../middleware');
 const {allProducts, nayaProduct} = require("../controllers/productController")
 
+
+
+router.get('/', (req, res)=>{
+    res.render('home'); 
+})
 // Read all the products 
 router.get('/products', isLoggedIn ,allProducts)
 
