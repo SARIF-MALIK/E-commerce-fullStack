@@ -61,14 +61,14 @@ You can start editing the page by modifying `views/auth,cart,products`. The page
 
 <!-- USAGE EXAMPLES -->
 ## ScreenShots
-![alt text](<Screenshot 2024-02-13 124113.png>)
-![alt text](<Screenshot 2024-02-13 124141.png>)
-![alt text](<Screenshot 2024-02-13 124640.png>)
-![alt text](<Screenshot 2024-02-13 124750.png>)
-![alt text](<Screenshot 2024-02-13 124732.png>)
-![alt text](<Screenshot 2024-02-13 124208.png>)
-![alt text](<Screenshot 2024-02-13 124223.png>)
-![alt text](<Screenshot 2024-02-13 124232.png>)
+![alt text](</pics/Screenshot 2024-02-13 124113.png>)
+![alt text](</pics/Screenshot 2024-02-13 124141.png>)
+![alt text](</pics/Screenshot 2024-02-13 124640.png>)
+![alt text](</pics/Screenshot 2024-02-13 124750.png>)
+![alt text](</pics/Screenshot 2024-02-13 124732.png>)
+![alt text](</pics/Screenshot 2024-02-13 124208.png>)
+![alt text](</pics/Screenshot 2024-02-13 124223.png>)
+![alt text](</pics/Screenshot 2024-02-13 124232.png>)
 <!-- CONTRIBUTING -->
 ## Contributing
 
