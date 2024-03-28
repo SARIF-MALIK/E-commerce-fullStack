@@ -70,6 +70,8 @@ You can start editing the page by modifying `views/auth,cart,products`. The page
 ![alt text](</pics/Screenshot 2024-02-13 124208.png>)
 ![alt text](</pics/Screenshot 2024-02-13 124223.png>)
 ![alt text](</pics/Screenshot 2024-02-13 124232.png>)
+<!-- ARCHITECTURE -->
+<img src="https://github.com/SARIF-MALIK/E-commerce-fullStack/blob/master/pics/ARCHITECTURE.jpg?raw=true" />
 <!-- CONTRIBUTING -->
 ## Contributing
 
