@@ -5,6 +5,9 @@
 
 <div align="center"> 
   <a  href="https://ecommerce-rawg.onrender.com/">Live Link 🚀</a>
+  
+  <p align="center">login ID: <b>bob</b></p>
+  <p align="center">Password: <b>abcd</b></p>
 </div>
 
 
